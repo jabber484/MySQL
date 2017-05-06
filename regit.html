@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Password Validation</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Password Validation">
+		<meta name="author" content="Johnson">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.11.1/validate.min.js"></script>
+		<style>
+		.form {
+			margin-top: 15px;
+		}
+		.banner {
+			box-shadow: inset 0 0 10px #000000; 
+			background-color: #F5FFFA;
+			padding-top: 15px;
+			padding-bottom: 30px;
+		}		
+		</style>
+	</head>
+	
+	<body>
+	<div class="banner">
+		<div class="container">
+			<h1>Registration</h1>
+			<div><span style="color:red;">*</span> required</div>
+		</div>
+	</div>
+	<div class="form container">
+	<form method="post">  
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr><th>Personal Information</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Salutation <span style="color:red;">*</span></td>
+				<td><select name="salutation">
+					<option value=""></option>
+					<option value="Mr.">Mr.</option>
+					<option value="Miss.">Miss.</option>
+					<option value="Mrs.">Mrs.</option>
+					<option value="Dr.">Dr.</option>
+				 </select></td></tr>
+				<tr><td>Given name <span style="color:red;">*</span> </td><td><input type="text" id="name" name="name"></input></td></tr>
+				<tr><td>Surname <span style="color:red;">*</span> </td><td><input type="text" id="surname" name="surname"></input></td></tr>
+				<tr><td>Job title <span style="color:red;">*</span> </td><td><input type="text" id="tittle" name="tittle"></input></td></tr>
+			</tbody>
+			<thead>
+				<tr><th>Account Information</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Email address <span style="color:red;">*</span> </td><td><input type="text" id="email" name="email"></input></td></tr>
+				<tr><td>Retype email address <span style="color:red;">*</span> </td><td><input type="text" id="emailr"></input></td></tr>
+				<tr>
+					<td>Password <span style="color:red;">*</span></td>
+					<td>
+						<div><input type="password" id="password" name="password"></input></div>
+						<div>
+							<div id="pw1">Rule 1: Must contain at least 8 characters</div>
+							<div id="pw2">Rule 2: Must contain <b>BOTH</b> upper and lower-case characters</div>
+							<div id="pw3">Rule 3: Must contain only letters, numbers and underscores</div>						
+						</div>
+					</td>
+				</tr>
+				<tr>
+				<td>Retype password <span style="color:red;">*</span></td>
+				<td>
+					<div><input type="password" id="passwordr"></input></div>
+					<div id="pw4"></div>
+				</td>
+				</tr>
+			</tbody>	
+			<thead>
+				<tr><th>Contact Information</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>Phone number </td><td><input type="text" id="password" name="password"></input></td></tr>
+				<tr>
+					<td>Address <span style="color:red;">*</span> </td>
+					<td>
+						<div><input type="text" id="password" name="password"></input></div>
+						<div style="margin-top:2px;margin-bottom:2px;"><input type="text" id="password" name="password"></input></div>
+						<div><input type="text" id="password" name="password"></input></div>
+					</td>
+					</tr>
+			</tbody>				
+		</table>
+	</form>	
+	<button type="button" class="btn btn-sm btn-default">Submit</button>
+	</div>	
+	<script>
+	$(function(){
+		$("th").attr('colspan',2);
+		$("input").css("width","300px");
+		$("tr td:first-child").css({"width":"170px","text-align":"right","vertical-align":"middle"});
+	});
+	
+	$("#password").blur(function(){vpw($("#password").val())});
+	$("#passwordr").blur(function(){
+		if($("#passwordr").val()!=""){
+			if($("#passwordr").val()==$("#password").val()){
+				$("#pw4").html("<span style='color:green'>Match<span>");
+				return true;	
+			} else 
+				$("#pw4").html("<span style='color:red'>Does Not Match<span>");
+		}
+	});
+	
+	function vpw(input) {
+		if(input!=""){
+			re=/.{8,}/;
+			if(re.test(input)){
+				re= /[a-z]/;
+				re2= /[A-Z]/;
+				if(re.test(input) & re2.test(input)){
+					re= /\W/;
+					if(!(re.test(input))){
+						$("#pw1").css("color","green");
+						$("#pw2").css("color","green");
+						$("#pw3").css("color","green");
+						}
+					else{
+						$("#pw1").css("color","green");
+						$("#pw2").css("color","green");
+						$("#pw3").css("color","red");	
+						return true;
+					}
+				} else{
+					$("#pw1").css("color","green");
+					$("#pw2").css("color","red");
+				}
+			} else
+				$("#pw1").css("color","red");
+		} else 
+			alert("Password cannot be empty!");
+	}
+		
+		
+	</script>
+</body>
+</html>	
