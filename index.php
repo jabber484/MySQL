@@ -53,7 +53,7 @@
 	</form>	
 	<div id="err" style="text-align:center;color:red;">
 	<?php
-	if($_POST["f"]==1) echo "Login Information has error. Check again.";
+	if($_GET["f"]==1) echo "Login Information has error. Check again.";
 	?>
 	</div>
 	</div>
