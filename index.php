@@ -30,7 +30,7 @@
 	</head>
 	<body>
 	<div class="container">
-	<form action="/verify.php" method="post">  
+	<form action="verify.php" method="post">  
 		<table class="gateway table table-striped table-bordered">
 			<thead>
 				<tr><th>Login Gateway</th></tr>
