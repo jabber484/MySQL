@@ -100,8 +100,11 @@
 	$("#title").text("<?php echo $info['title'];?>");
 	$("#email").text("<?php echo $info['email'];?>");
 	$("#password").text("<?php echo $info['pw'];?>");
-	$("#phone").text("<?php echo $info['phone'];?>");
 	$("#address").text("<?php echo $info['address'];?>");
+	if(<?php echo $info['phone'];?>==0)
+		$("#phone").text("N/A");
+	else
+		$("#phone").text("<?php echo $info['phone'];?>");
 	
 	$('h1.rainbow').rainbow({	
 		colors: [
