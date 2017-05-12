@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Password Validation</title>
+		<title>Login Gateway</title>
 		<meta charset="UTF-8">
 		<meta name="description" content="Login Gateway">
 		<meta name="author" content="Johnson">
