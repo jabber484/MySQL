@@ -3,7 +3,7 @@
 	<head>
 		<title>Password Validation</title>
 		<meta charset="UTF-8">
-		<meta name="description" content="Password Validation">
+		<meta name="description" content="Login Gateway">
 		<meta name="author" content="Johnson">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
