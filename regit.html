@@ -101,7 +101,13 @@
 				<tr><th>Contact Information</th></tr>
 			</thead>
 			<tbody>
-				<tr><td>Phone number </td><td><input type="text" id="phone" name="phone"></input></td></tr>
+				<tr>
+					<td>Phone number </td>
+					<td>
+						<input type="text" id="phone" name="phone"></input>
+						<div id="phone_err"></div>
+					</td>
+				</tr>
 				<tr>
 					<td>Address <span style="color:red;">*</span> </td>
 					<td>
@@ -132,6 +138,7 @@
 		validEM();
 		checkEM();
 	});
+	$("#phone").blur(validPhone);
 	
 	function validPW() {
 		var input = $("#password").val();
@@ -234,7 +241,18 @@
 		else
 			alert("Input(s) not valid");
 	}
-		
+
+	function validPhone() {
+		re = /^\d//;
+		if (re.test($("#phone").val())){
+			$("#phone_err").html("");
+			return true;
+		} else {
+			$("#phone_err").html("<span style='color:red'>Numbers Only<span>");	
+			return false;
+		}
+	}	
+	
 	function rain(x){ //rainnnnnnnnnnnnnnbow
 			x.rainbow({	
 			colors: [
