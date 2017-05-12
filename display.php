@@ -10,6 +10,7 @@
 	$sql = "SELECT * FROM acc_info INNER JOIN login ON acc_info.uid=login.uid WHERE acc_info.uid=$id";
 	$result = $conn->query($sql);
 	$info = $result->fetch_assoc();
+	$conn->close();	
 ?><!DOCTYPE html>
 <html lang="en">
 	<head>
